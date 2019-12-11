@@ -12,17 +12,19 @@
   <title>RP&S</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="assets/style.css">
-
+  <link rel="stylesheet" href="assets/reset.css">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+  
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
 
-   <!-- The core Firebase JS SDK is always required and must be listed first -->
-   <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
-
-   <!-- TODO: Add SDKs for Firebase products that you want to use
-  https://firebase.google.com/docs/web/setup#available-libraries -->
-   <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
 
 </head>
 
@@ -42,7 +44,7 @@
         <ul class="right ">
 
           <!-- Modal Trigger -->
-          <a class="waves-effect waves-light btn modal-trigger grey" href="#modal1">Sign Up</a>
+          <a class="waves-effect waves-light btn modal-trigger grey" href="#modal1">Log In/Sign Up</a>
 
         </ul>
 
@@ -55,21 +57,55 @@
 
 
   <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Sign Up</h4>
-      <input  id="first_name" type="text" class="validate">
-          <label for="first_name">User Name</label>
-      <input id="email" type="email" class="validate">
-      <label for="email">Email</label>
-      <input id="password" type="password" class="validate">
-      <label for="password">Password</label>
+  <div id="modal1" class="modal ">
+    <div class="modal-content grey darken-3">
+
+
+      <div class="row ">
+        <div class="col s12">
+          <ul class="tabs card grey ">
+            <li class="tab col s6"><a class="active black-text" href="#test2">Sing In</a></li>
+            <li class="tab col s6"><a class="black-text" href="#test1">Sing Up</a></li>
+          </ul>
+        </div>
+        <div id="test1" class="col s12">
+
+          <div class="container black-text">
+
+            <input id="username-input" type="text" class="validate">
+            <label for="user-name">User Name</label>
+            <input id="email-input" type="email" class="validate ">
+            <label for="email">Email</label>
+            <input id="password-input" type="password" class="validate">
+            <label for="password">Password</label>
+            <button class="btn-medium waves-effect waves-light right grey"><i id="click-button" class="material-icons">person_add</i></button>
+          </div>
+
+
+        </div>
+        <div id="test2" class="col s12">
+
+
+            <div class="container black-text">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+          <button class="waves-effect waves-light btn right grey black-text">next</button>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
 
     </div>
-    <div class="modal-footer">
-      <a href="#!" id="boton" class="modal-close waves-effect waves-green btn-flat">Next</a>
-    </div>
+
   </div>
+
 
 
 
@@ -79,34 +115,34 @@
 
 
     <div class="row">
-        <div class="col s4 m4 l4 ">
+      <div class="col s4 m4 l4 ">
 
-          <h3 class="center title">Chat</h3>
-          <div class="card grey darken-3 ">
-            <div class="card-content black-text">
-              
-              <p>I am a very simple card. I am good at containing small bits of information.
+        <h3 class="center title">Chat</h3>
+        <div class="card grey darken-3 " style="height: 600px;">
+          <div class="card-content black-text">
+
+            <p>I am a very simple card. I am good at containing small bits of information.
               I am convenient because I require little markup to use effectively.</p>
 
-             
-                <textarea id="textarea1" class="materialize-textarea "></textarea>
-                <label for="textarea1 black-text">Textarea</label>
-                <button class="waves-effect waves-green btn-flat grey right btn-small">Send</button>
-            </div>
-           
+
+            <textarea id="textarea1" class="materialize-textarea "></textarea>
+            <label for="textarea1 black-text">Textarea</label>
+            <button class="waves-effect waves-green btn-flat grey right btn-small">Send</button>
           </div>
+
         </div>
+      </div>
       <!-- player One -->
       <div class="col s8 m8 l8 ">
 
-        
+
         <h3 class="center title">Player One</h3>
         <h4>wins :<span> 3</span></h4>
         <h4>loses :<span> 3</span></h4>
         <h4>tie :<span> 3</span></h4>
 
-        
-        <div class="card grey " id="pollo">
+
+        <div class="card grey ">
 
 
           <img class="col s4 m4 l4 p1"
@@ -132,11 +168,11 @@
         </div>
       </div>
 
-     
-      
+
+
       <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-      <script src="assets/java.js"></script>
-      <!-- Compiled and minified JavaScript -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      
-      </html>
+      <!-- Compiled and minified JavaScript -->
+      <script src="assets/java.js"></script>
+
+</html>

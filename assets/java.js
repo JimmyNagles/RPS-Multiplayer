@@ -1,3 +1,5 @@
+
+//connects to firebase
 var firebaseConfig = {
   apiKey: "AIzaSyA47mPlkyMpUqLQKSnhw99MbrQZUACC-8I",
   authDomain: "rockpapperscissors.firebaseapp.com",
@@ -11,11 +13,30 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
-
+//creates variables to use firebases database and auth
 const database = firebase.database();
 const auth = firebase.auth();
 
 console.log(database)
+
+var playerChoice= "";
+//when rock btn is clicked
+$("rock").on("click",function(){
+
+console.log(this)
+
+  
+})
+//when papper btn is clicked
+$("papper").on("click",function(){
+  console.log(this)
+  
+})
+//when scissors btn is clicked
+$("scissors").on("click",function(){
+  console.log(this)
+
+})
 
 
 

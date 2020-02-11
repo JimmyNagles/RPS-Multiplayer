@@ -9,211 +9,171 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>RP&S</title>
+  <title>Train schedule</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<!-- reset css -->
   <link rel="stylesheet" href="assets/reset.css">
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
- 
-
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<!-- css styleshhet -->
   <link rel="stylesheet" href="assets/style.css">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 
-<body class="grey darken-3">
+<body class="black">
 
-
-
-  <!-- nav container -->
-  <div class="container ">
-
-
-
-    <nav>
-      <div class="nav-wrapper  grey">
-
-        <a href="#!" class="brand-logo center black-text">R, P & S</a>
-        <ul class="right ">
-
-          <!-- Modal Trigger -->
-          <a class="waves-effect waves-light btn modal-trigger grey" href="#modal1">Log In/Sign Up</a>
-
-        </ul>
-
-
-      </div>
-
-    </nav>
-
-  </div>
-
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal ">
-    <div class="modal-content grey darken-3">
-
-
-      <div class="row ">
-        <div class="col s12">
-          <ul class="tabs card grey ">
-            <li class="tab col s6"><a class="active black-text" href="#test2">Sing In</a></li>
-            <li class="tab col s6"><a class="black-text" href="#test1">Sing Up</a></li>
-          </ul>
-        </div>
-        <div id="test1" class="col s12">
-
-          <div class="container black-text">
-
-            <input id="username-input" type="text" class="validate">
-            <label for="user-name">User Name</label>
-            <input id="email-input" type="email" class="validate ">
-            <label for="email">Email</label>
-            <input id="password-input" type="password" class="validate">
-            <label for="password">Password</label>
-            <button class="btn-medium waves-effect waves-light right grey"><i id="click-button"
-                class="material-icons">person_add</i></button>
-          </div>
-
+  <!-- tittle card -->
+  <div class="row">
+    <div class="col s12 m12 l12">
+      <div class="card black white-text">
+        <div class="card-content white-text">
+          <h2 class="title center">Train schedule</h2>
 
         </div>
-        <div id="test2" class="col s12">
-
-
-          <div class="container black-text">
-            <input id="email" type="email" class="validate">
-            <label for="email">Email</label>
-            <input id="password" type="password" class="validate">
-            <label for="password">Password</label>
-            <button class="waves-effect waves-light btn right grey black-text">next</button>
-
-          </div>
+        <div class="card-action">
+          <a href="#trainDiv">Add train</a>
+         
         </div>
       </div>
-
-
-
-
-
-
     </div>
+  </div>
+<!-- parrallax -->
+  <div class="parallax-container">
+    <div class="parallax"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"></div>
+  </div>
+  
+   <!-- train schedule -->
+  
+ 
+      <div class="card black white-text">
+        <div class="card-content white-text">
+          <h2 class="title center">Train Schedule</h2>
 
+          <!--  creates a table -->
+          <table>
+
+            <!--  names of each colun in table -->
+            <thead>
+              <tr>
+                <th>Train Name</th>
+                <th>destination</th>
+                <th>Frequency(min)</th>
+                <th>Next Arrival</th>
+                <th>Minutes Away</th>
+              </tr>
+            </thead>
+            <!-- body of table where each train info goes -->
+            <tbody>
+              <tr>
+                <td>Alvin</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+                <td>Eclair</td>
+                <td>$0.87</td>
+              </tr>
+         
+          
+            </tbody>
+          </table>
+
+
+
+        </div>
+
+      </div>
+   
+  
+
+  <div class="parallax-container">
+    <div class="parallax"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"></div>
   </div>
 
-  <br>
+
+ 
+  <!-- train schedule -->
+  <div class="row">
+
+    <div class="col s12 m12 l12">
+      
+      <div class="card black white-text">
+        <div class="card-content white-text">
+          <h2 class="title center" id="trainDiv">Add Train</h2>
 
 
-
-  <!-- player status container -->
-  <div class="container">
-
-
-    <div class="row">
-
-
-      <div class="col s4 m4 l4 ">
-        <div class="card grey">
-          <h3 class="center">Chat</h3>
-        </div>
-
-
-        <div class="card grey " >
-          <div class="card-content black-text">
-
-            <p style="height: 400px;">I am a very simple card. I am good at containing small bits of information.
-              I am convenient because I require little markup to use effectively.</p>
-
-
-            <textarea id="textarea1" class="materialize-textarea grey darken-3"></textarea>
-            <label for="textarea1 black-text" >Textarea</label>
-            <button class="waves-effect waves-green btn-flat grey right btn-small">Send</button>
+          <!-- train name div -->
+          <div class="input-field ">
+            <input id="train_name" type="text" class="validate">
+            <label for="train_name">Tain name </label>
+          </div>
+          <!-- destination div -->
+          <div class="input-field ">
+            <input id="destination" type="text" class="validate">
+            <label for="destination">destination</label>
+          </div>
+          <!-- first arrival of train div -->
+          <div class="input-field ">
+            <input id="first_arrival" type="text" class="validate">
+            <label for="first_arrival">First train time </label>
+          </div>
+          <!-- how frequent the train is -->
+          <div class="input-field ">
+            <input id="frequency" type="text" class="validate">
+            <label for="frequency">Frequency</label>
           </div>
 
+                <a class="btn-flat  white-text" id="addTrain">Add Train</a>
+         
+         
+
         </div>
+
       </div>
+    </div>
+  </div>
+  </div>
+
+
+
+  
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-analytics.js"></script>
+
+  <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyCBSPCg5CxQPJ21vNi43iLySWz5A5Q7hsk",
+      authDomain: "trainschedule-c8cb3.firebaseapp.com",
+      databaseURL: "https://trainschedule-c8cb3.firebaseio.com",
+      projectId: "trainschedule-c8cb3",
+      storageBucket: "trainschedule-c8cb3.appspot.com",
+      messagingSenderId: "24287390514",
+      appId: "1:24287390514:web:9f36c018de05985699852b",
+      measurementId: "G-100Y064EHX"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+
+     <!-- Compiled and minified JavaScript -->
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+  <script src="assets/java.js"></script>
 
 
 
 
 
 
-      <!-- player One -->
-      <div class="col s8 m8 l8 ">
-
-
-        <div class="card grey">
-          <div class="row">
-            <div class="col s6 m6 l6">
-              <h4 class="center title">Player's name</h4>
-            </div>
-            <div class="col s6 m6 l6">
-              <h4 class="center title">green/red</h4>
-            </div>
-
-            <div class="col s12 m12 l12">
-
-              <h5 class="col s4 m4 l4">
-                wins
-                <p id="wins">2</p>
-              </h5>
-              <h5 class="col s4 m4 l4">
-                tied
-                <p id="tied">2</p>
-              </h5>
-              <h5 class="col s4 m4 l4">
-                lost
-                <p id="lost">2</p>
-              </h5>
-            </div>
-
-          </div>
-        </div>
-
-
-
-        <div class="card grey ">
-
-
-          <img class="col s4 m4 l4 p1"
-            src="https://cdn1.iconfinder.com/data/icons/finger-line-vol1/64/icn_finger_hand_punch_fist_-512.png">
-
-          <img class="col s4 m4 l4 p2"
-            src="https://img.pngio.com/rock-paper-scissors-icons-download-free-vector-icons-noun-project-rock-paper-scissors-png-200_200.png">
-          <img class="col s4 m4 l4 p3" src="https://static.thenounproject.com/png/341564-200.png">
-
-
-
-
-
-          <button class="waves-effect waves-light btn col s4 m4 l4  grey darken-3 r1" data-value="rock" id="rock" >Rock</button>
-
-          <button class="waves-effect waves-light btn col s4 m4 l4  grey darken-3 p1" data-value="papper" id="papper">Papper</button>
-
-
-
-          <button class="waves-effect waves-light btn col s4 m4 l4  grey darken-3 s1" data-value="Scissors" id="Scissors">Scissors</button>
-          <h2 class="center"id="watchers" >Online</h2>
-
-        </div>
-      </div>
-
-       <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-database.js"></script>
-
-
-
-
-      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      
-      
-      <script src="assets/auth.js"></script>
-      <script src="assets/java.js"></script>
+</body>
 
 </html>

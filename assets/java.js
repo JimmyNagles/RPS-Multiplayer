@@ -1,53 +1,34 @@
 
-//connects to firebase
-var firebaseConfig = {
-  apiKey: "AIzaSyA47mPlkyMpUqLQKSnhw99MbrQZUACC-8I",
-  authDomain: "rockpapperscissors.firebaseapp.com",
-  databaseURL: "https://rockpapperscissors.firebaseio.com",
-  projectId: "rockpapperscissors",
-  storageBucket: "rockpapperscissors.appspot.com",
-  messagingSenderId: "56440700864",
-  appId: "1:56440700864:web:c2f343c7e5e6bdca2dd225",
-  measurementId: "G-R20JST999W"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
-//creates variables to use firebases database and auth
-const database = firebase.database();
-const auth = firebase.auth();
 
-console.log(database)
-
-var playerChoice= "";
-//when rock btn is clicked
-$("rock").on("click",function(){
-
-console.log(this)
-
-  
-})
-//when papper btn is clicked
-$("papper").on("click",function(){
-  console.log(this)
-  
-})
-//when scissors btn is clicked
-$("scissors").on("click",function(){
-  console.log(this)
-
-})
+  $('.parallax').parallax();
 
 
 
+//  // Capture Button Click
+//  $("#addTrain").on("click", function(event) {
+//   // prevent form from trying to submit/refresh the page
+//   event.preventDefault();
 
-$(document).ready(function () {
+//   // Capture User Inputs and store them into variables
+//   var trainName = $("#train_Name").val().trim();
+//   var destination = $("#destination").val().trim();
+//   var firstArrival = $("#first_arrival").val().trim();
+//   var frequency = $("#frequency").val().trim();
 
-  $('.modal').modal();
-  $('.tabs').tabs();
+//   // Console log each of the user inputs to confirm we are receiving them
+//   console.log(trainName);
+//   console.log(destination);
+//   console.log(firstArrival);
+//   console.log(frequency);
 
+//   // Output all of the new information into the relevant HTML sections
+//   $("#train_name").text(name);
+//   $("#destination").text(destination);
+//   $("#first_arrival").text(first);
+//   $("#frequency").text(frequency);
 
-});
+// });
 
 
 // gets players sing in/up infor

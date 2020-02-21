@@ -12,15 +12,14 @@
   <title>Train schedule</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- reset css -->
+  <!-- reset css -->
   <link rel="stylesheet" href="assets/reset.css">
 
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<!-- css styleshhet -->
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!-- css styleshhet -->
   <link rel="stylesheet" href="assets/style.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+ 
 </head>
 
 <body class="black">
@@ -35,69 +34,100 @@
         </div>
         <div class="card-action">
           <a href="#trainDiv">Add train</a>
-         
+          <!-- Modal Trigger -->
+          <a class="waves-effect waves-light btn-flat modal-trigger" href="#modal1">Log-in/register</a>
+
+          <!-- Modal Structure -->
+          <div id="modal1" class="modal">
+            <!-- content -->
+            <div class="modal-content  ">
+             
+   
+  <!-- train name div -->
+  <div class="input-field ">
+    <input id="username" type="text" class="validate teal-text">
+    <label for="username">Username </label>
+  </div>
+  <!-- destination div -->
+  <div class="input-field ">
+    <input id="password" type="text" class="validate teal-text">
+    <label for="password">Password</label>
+  </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+              <a href="#!" id="addTrain" class="modal-close waves-effect waves-green btn-flat">submit</a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </div>
-<!-- parrallax -->
+  <!-- parrallax -->
   <div class="parallax-container">
-    <div class="parallax"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"></div>
+    <div class="parallax"><img
+        src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
+    </div>
   </div>
-  
-   <!-- train schedule -->
-  
- 
-      <div class="card black white-text">
-        <div class="card-content white-text">
-          <h2 class="title center">Train Schedule</h2>
 
-          <!--  creates a table -->
-          <table>
-
-            <!--  names of each colun in table -->
-            <thead>
-              <tr>
-                <th>Train Name</th>
-                <th>destination</th>
-                <th>Frequency(min)</th>
-                <th>Next Arrival</th>
-                <th>Minutes Away</th>
-              </tr>
-            </thead>
-            <!-- body of table where each train info goes -->
-            <tbody>
-              <tr>
-                <td>Alvin</td>
-                <td>Eclair</td>
-                <td>$0.87</td>
-                <td>Eclair</td>
-                <td>$0.87</td>
-              </tr>
-         
-          
-            </tbody>
-          </table>
+  <!-- train schedule -->
 
 
+  <div class="card black white-text">
+    <div class="card-content white-text">
+      <h2 class="title center">Schedule</h2>
 
-        </div>
+      <!--  creates a table -->
+      <table>
 
-      </div>
-   
-  
+        <!--  names of each colun in table -->
+        <thead>
+          <tr>
+            <th>Train Name</th>
+            <th>destination</th>
+            <th>Frequency(min)</th>
+            <th>Next Arrival</th>
+            <th>Minutes Away</th>
+          </tr>
+        </thead>
+        <!-- body of table where each train info goes -->
+        <tbody>
+          <tr>
+            <td>Alvin</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+            <td>Eclair</td>
+            <td>$0.87</td>
+          </tr>
 
-  <div class="parallax-container">
-    <div class="parallax"><img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80"></div>
+
+        </tbody>
+      </table>
+
+
+
+    </div>
+
   </div>
 
 
- 
+
+  <div class="parallax-container">
+    <div class="parallax"><img
+        src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80">
+    </div>
+  </div>
+
+
+
   <!-- train schedule -->
   <div class="row">
 
     <div class="col s12 m12 l12">
-      
+
       <div class="card black white-text">
         <div class="card-content white-text">
           <h2 class="title center" id="trainDiv">Add Train</h2>
@@ -105,28 +135,28 @@
 
           <!-- train name div -->
           <div class="input-field ">
-            <input id="train_name" type="text" class="validate">
+            <input id="train_name" type="text" class="validate teal-text">
             <label for="train_name">Tain name </label>
           </div>
           <!-- destination div -->
           <div class="input-field ">
-            <input id="destination" type="text" class="validate">
+            <input id="destination" type="text" class="validate teal-text">
             <label for="destination">destination</label>
           </div>
           <!-- first arrival of train div -->
           <div class="input-field ">
-            <input id="first_arrival" type="text" class="validate">
-            <label for="first_arrival">First train time </label>
+            <input id="first_arrival" type="text" class="validate teal-text">
+            <label for="first_arrival">First train time(HH:mm-military time) </label>
           </div>
           <!-- how frequent the train is -->
           <div class="input-field ">
-            <input id="frequency" type="text" class="validate">
-            <label for="frequency">Frequency</label>
+            <input id="frequency" type="text" class="validate teal-text">
+            <label for="frequency">Frequency(min)</label>
+          </div>
+          <div class="right">
+            <a class="btn-flat  white-text" id="addT">Add Train</a>
           </div>
 
-                <a class="btn-flat  white-text" id="addTrain">Add Train</a>
-         
-         
 
         </div>
 
@@ -136,41 +166,25 @@
   </div>
 
 
-
-  
-
-
-  <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
-
-  <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
-  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-analytics.js"></script>
-
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyCBSPCg5CxQPJ21vNi43iLySWz5A5Q7hsk",
-      authDomain: "trainschedule-c8cb3.firebaseapp.com",
-      databaseURL: "https://trainschedule-c8cb3.firebaseio.com",
-      projectId: "trainschedule-c8cb3",
-      storageBucket: "trainschedule-c8cb3.appspot.com",
-      messagingSenderId: "24287390514",
-      appId: "1:24287390514:web:9f36c018de05985699852b",
-      measurementId: "G-100Y064EHX"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.8.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.9.0/firebase-database.js"></script>
 
 
-     <!-- Compiled and minified JavaScript -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-            
+<!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- moment js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
   <script src="assets/java.js"></script>
 
 
-
+ 
 
 
 

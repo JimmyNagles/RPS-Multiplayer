@@ -1,34 +1,97 @@
 
 
+trainName="";
+destination="";
+firstArrival=" ";
+frequency="";
 
-  $('.parallax').parallax();
+//materialized
+
+$('.parallax').parallax();
+
+$('.modal').modal();
 
 
 
-//  // Capture Button Click
-//  $("#addTrain").on("click", function(event) {
-//   // prevent form from trying to submit/refresh the page
-//   event.preventDefault();
 
-//   // Capture User Inputs and store them into variables
-//   var trainName = $("#train_Name").val().trim();
-//   var destination = $("#destination").val().trim();
-//   var firstArrival = $("#first_arrival").val().trim();
-//   var frequency = $("#frequency").val().trim();
 
-//   // Console log each of the user inputs to confirm we are receiving them
-//   console.log(trainName);
-//   console.log(destination);
-//   console.log(firstArrival);
-//   console.log(frequency);
+const firebaseConfig = {
+  apiKey: "AIzaSyCBSPCg5CxQPJ21vNi43iLySWz5A5Q7hsk",
+  authDomain: "trainschedule-c8cb3.firebaseapp.com",
+  databaseURL: "https://trainschedule-c8cb3.firebaseio.com",
+  projectId: "trainschedule-c8cb3",
+  storageBucket: "trainschedule-c8cb3.appspot.com",
+  messagingSenderId: "24287390514",
+  appId: "1:24287390514:web:9f36c018de05985699852b",
+  measurementId: "G-100Y064EHX"
+};
+  // Initialize Firebase
+  
+  firebase.initializeApp(firebaseConfig);
+   // Get a reference to the database service
+   let database = firebase.database();
 
-//   // Output all of the new information into the relevant HTML sections
-//   $("#train_name").text(name);
-//   $("#destination").text(destination);
-//   $("#first_arrival").text(first);
-//   $("#frequency").text(frequency);
+  console.log(database)
+ 
 
-// });
+
+
+// Capture Button Click
+$("#addT").on("click", function (event) {
+
+alert("ive been clicked")
+  // prevent form from trying to submit/refresh the page
+  event.preventDefault();
+
+  // Capture User Inputs and store them into variables
+  const trainName = $("#train_name").val().trim();
+  const destination = $("#destination").val().trim();
+  const firstArrival = $("#first_arrival").val().trim();
+  const frequency = $("#frequency").val().trim();
+
+
+  // Console log each of the user inputs to confirm we are receiving them
+  console.log(trainName);
+  console.log(destination);
+  console.log(firstArrival);
+  console.log(frequency);
+
+//clearns input
+clearsinput();
+//creates obj for train
+let newTrain={
+  trainName,
+  destination,
+  firstArrival,
+  frequency
+
+}
+
+database.ref().push(newTrain);
+
+
+console.log("just added to firebase")
+
+
+});
+
+
+
+
+
+function clearsinput() {
+
+  $("#train_name").val("");
+  $("#destination").val("");
+  $("#first_arrival").val("");
+  $("#frequency").val("");
+  alert("empty inputs")
+
+}
+
+
+
+
 
 
 // gets players sing in/up infor
@@ -44,6 +107,3 @@
 //lets user know who won
 // updates score
 //players go again
-
-
-

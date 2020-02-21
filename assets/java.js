@@ -58,6 +58,8 @@ alert("ive been clicked")
 
 //clearns input
 clearsinput();
+
+
 //creates obj for train
 let newTrain={
   trainName,
@@ -66,7 +68,7 @@ let newTrain={
   frequency
 
 }
-
+//sends info to firebase real time database
 database.ref().push(newTrain);
 
 
@@ -78,6 +80,45 @@ console.log("just added to firebase")
 
 
 
+//pulls info from firebase realtime database
+
+    // Firebase watcher + initial loader HINT: .on("value")
+    database.ref().on("child_added", function(snapshot) {
+
+      // Log everything that's coming out of snapshot
+     
+      console.log(snapshot.val().trainName);
+      console.log(snapshot.val().destination);
+      console.log(snapshot.val().frequency);
+      console.log(snapshot.val().firstArrival);
+
+      // // Change the HTML to reflect
+
+
+      let pullTrain=snapshot.val().trainName;
+      let pullDestination= snapshot.val().destination;
+      let pullFrequency=snapshot.val().frequency;
+      let pullFirstArrival=snapshot.val().firstArrival;
+
+      
+
+      $("#pullTrain").append("<td>"+pullTrain+"</td>")
+      $("#pullTrain").append("<td>"+pullDestination+"</td>")
+      $("#pullTrain").append("<td>"+pullFrequency+"</td>")
+      $("#pullTrain").append("<td>"+pullFirstArrival+"</td>")
+
+      
+      // $("#name-display").text(childSnapshot.val().trainName);
+      // $("#email-display").text(childSnapshot.val().destination);
+      // $("#age-display").text(childSnapshot.val().frequency);
+      // $("#comment-display").text(childSnapshot.val().comment);
+
+      // Handle the errors
+    }, function(errorObject) {
+      console.log("Errors handled: " + errorObject.code);
+    });
+    
+//function to cleat inputs
 
 function clearsinput() {
 
@@ -85,7 +126,7 @@ function clearsinput() {
   $("#destination").val("");
   $("#first_arrival").val("");
   $("#frequency").val("");
-  alert("empty inputs")
+ 
 
 }
 
@@ -93,17 +134,3 @@ function clearsinput() {
 
 
 
-
-// gets players sing in/up infor
-
-//updates page with players personal info
-
-//sets up chat
-//sets up friends list
-// on click event on button - rock - papper scissors
-
-// lets player know if the other player is ready
-//compares answer
-//lets user know who won
-// updates score
-//players go again

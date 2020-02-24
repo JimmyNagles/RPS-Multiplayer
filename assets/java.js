@@ -1,9 +1,7 @@
-
-
-trainName="";
-destination="";
-firstArrival=" ";
-frequency="";
+trainName = "";
+destination = "";
+firstArrival = " ";
+frequency = "";
 
 //materialized
 
@@ -25,21 +23,21 @@ const firebaseConfig = {
   appId: "1:24287390514:web:9f36c018de05985699852b",
   measurementId: "G-100Y064EHX"
 };
-  // Initialize Firebase
-  
-  firebase.initializeApp(firebaseConfig);
-   // Get a reference to the database service
-   let database = firebase.database();
+// Initialize Firebase
 
-  console.log(database)
- 
+firebase.initializeApp(firebaseConfig);
+// Get a reference to the database service
+let database = firebase.database();
+
+console.log(database)
+
 
 
 
 // Capture Button Click
 $("#addT").on("click", function (event) {
 
-alert("ive been clicked")
+
   // prevent form from trying to submit/refresh the page
   event.preventDefault();
 
@@ -56,23 +54,21 @@ alert("ive been clicked")
   console.log(firstArrival);
   console.log(frequency);
 
-//clearns input
-clearsinput();
+  //clearns input
+  clearsinput();
 
 
-//creates obj for train
-let newTrain={
-  trainName,
-  destination,
-  firstArrival,
-  frequency
+  //creates obj for train
+  let newTrain = {
+    trainName,
+    destination,
+    firstArrival,
+    frequency
 
-}
-//sends info to firebase real time database
-database.ref().push(newTrain);
+  }
+  //sends info to firebase real time database
+  database.ref().push(newTrain);
 
-
-console.log("just added to firebase")
 
 
 });
@@ -82,42 +78,56 @@ console.log("just added to firebase")
 
 //pulls info from firebase realtime database
 
-    // Firebase watcher + initial loader HINT: .on("value")
-    database.ref().on("child_added", function(snapshot) {
-
-      // Log everything that's coming out of snapshot
-     
-      console.log(snapshot.val().trainName);
-      console.log(snapshot.val().destination);
-      console.log(snapshot.val().frequency);
-      console.log(snapshot.val().firstArrival);
-
-      // // Change the HTML to reflect
+// Firebase watcher + initial loader HINT: .on("value")
+database.ref().on("child_added", function (snapshot) {
 
 
-      let pullTrain=snapshot.val().trainName;
-      let pullDestination= snapshot.val().destination;
-      let pullFrequency=snapshot.val().frequency;
-      let pullFirstArrival=snapshot.val().firstArrival;
+  //variables for firebase 
 
-      
+  let snapName = snapshot.val().trainName;
+  let snapDestination = snapshot.val().destination;
+  let snapFrequency = snapshot.val().frequency;
+  let snapFirstArrival = snapshot.val().firstArrival;
 
-      $("#pullTrain").append("<td>"+pullTrain+"</td>")
-      $("#pullTrain").append("<td>"+pullDestination+"</td>")
-      $("#pullTrain").append("<td>"+pullFrequency+"</td>")
-      $("#pullTrain").append("<td>"+pullFirstArrival+"</td>")
+  //train time
+  //get current time
+  let currentTime = moment().format("HH:mmA");
+  console.log("current time",currentTime)
+  //
+  //
+  let mtime = moment(snapFirstArrival, "HH:mmA");
+  console.log("train time",mtime)
+  //
+  //
+  //converts frequency into moment minutes
+  let everyxm = moment(snapFrequency, "mmA")
+  console.log("every x minutes",everyxm)
 
-      
-      // $("#name-display").text(childSnapshot.val().trainName);
-      // $("#email-display").text(childSnapshot.val().destination);
-      // $("#age-display").text(childSnapshot.val().frequency);
-      // $("#comment-display").text(childSnapshot.val().comment);
 
-      // Handle the errors
-    }, function(errorObject) {
-      console.log("Errors handled: " + errorObject.code);
-    });
-    
+  console.log(mtime.toNow())
+ 
+  
+
+
+
+  let minutesAway;
+  let nextArrival;
+
+
+
+
+
+
+
+
+
+  // Handle the errors
+}, function (errorObject) {
+  console.log("Errors handled: " + errorObject.code);
+});
+
+
+
 //function to cleat inputs
 
 function clearsinput() {
@@ -126,11 +136,6 @@ function clearsinput() {
   $("#destination").val("");
   $("#first_arrival").val("");
   $("#frequency").val("");
- 
+
 
 }
-
-
-
-
-

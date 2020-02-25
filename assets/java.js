@@ -95,8 +95,8 @@ database.ref().on("child_added", function (snapshot) {
   console.log("current time",currentTime)
   //
   //
-  let mtime = moment(snapFirstArrival, "HH:mmA");
-  console.log("train time",mtime)
+  let tTime = moment(snapFirstArrival, "HH:mmA");
+  console.log("train time",tTime)
   //
   //
   //converts frequency into moment minutes
@@ -104,9 +104,15 @@ database.ref().on("child_added", function (snapshot) {
   console.log("every x minutes",everyxm)
 
 
-  console.log(mtime.toNow())
- 
   
+ let maxmoment= moment.max(moment(),tTime);
+ console.log("max moment",maxmoment)
+  
+
+ console.log(moment(tTime).fromNow(true))
+
+ 
+
 
 
 

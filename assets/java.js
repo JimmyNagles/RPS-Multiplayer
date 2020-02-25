@@ -103,21 +103,40 @@ database.ref().on("child_added", function (snapshot) {
   let everyxm = moment(snapFrequency, "mmA")
   console.log("every x minutes",everyxm)
 
+  
+    let minutesAway;
+    let nextArrival;
 
   
- let maxmoment= moment.max(moment(),tTime);
- console.log("max moment",maxmoment)
-  
+ let maxMoment= moment.max(moment(),tTime);
+ console.log("max moment",maxMoment)
 
- console.log(moment(tTime).fromNow(true))
+
+  // If the first train is later than the current time, sent arrival to the first train time
+  if (maxMoment === tTime) {
+    nextArrival = tTime.format("hh:mm A");
+    minutesAway = tTime.diff(moment(), "minutes");
+  } else {
+    // Calculate the minutes until arrival using hardcore math
+    // To calculate the minutes till arrival, take the current time in unix subtract the FirstTrain time
+    // and find the modulus between the difference and the frequency.
+    var differenceTimes = moment().diff(tTime, "minutes");
+    var tRemainder = differenceTimes % everyxm;
+    minutesAway = everyxm - tRemainder;
+    // To calculate the arrival time, add the minutesAway to the current time
+    nextArrival = moment()
+      .add(minutesAway, "m")
+      .format("hh:mm A");
+  }
+  console.log("minutesAway:", minutesAway);
+  console.log("nextArrival:", nextArrival);
+
+
 
  
 
 
 
-
-  let minutesAway;
-  let nextArrival;
 
 
 

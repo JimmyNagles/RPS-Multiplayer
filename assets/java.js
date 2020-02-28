@@ -47,6 +47,9 @@ $("#addT").on("click", function (event) {
   const firstArrival = $("#first_arrival").val().trim();
   const frequency = $("#frequency").val().trim();
 
+  let minutesAway;
+  let nextArrival;
+
 
   // Console log each of the user inputs to confirm we are receiving them
   console.log(trainName);
@@ -58,12 +61,55 @@ $("#addT").on("click", function (event) {
   clearsinput();
 
 
+  //train time
+  //get current time
+  let currentTime = moment().format("HH:mmA");
+  console.log("current time", currentTime)
+  //
+  //
+  let tTime = moment(firstArrival, "HH:mmA");
+  console.log("train time", tTime)
+  //
+  //
+  //converts frequency into moment minutes
+  let everyxm = moment(frequency, "mmA")
+  console.log("every x minutes", everyxm)
+
+
+
+  let maxMoment = moment.max(moment(), tTime);
+  console.log("max moment", maxMoment)
+
+
+  // If the first train is later than the current time, sent arrival to the first train time
+  if (maxMoment === tTime) {
+    nextArrival = tTime.format("HH:mm A");
+    minutesAway = tTime.diff(moment(), "minutes");
+  } else {
+    // Calculate the minutes until arrival using hardcore math
+    // To calculate the minutes till arrival, take the current time in unix subtract the FirstTrain time
+    // and find the modulus between the difference and the frequency.
+    var differenceTimes = moment().diff(tTime, "minutes");
+    var tRemainder = differenceTimes % everyxm;
+    minutesAway = everyxm - tRemainder;
+    // To calculate the arrival time, add the minutesAway to the current time
+    nextArrival = moment()
+      .add(minutesAway, "m")
+      .format("HH:mmA");
+  }
+  console.log("minutesAway:", minutesAway);
+  console.log("nextArrival:", nextArrival);
+
+
+
   //creates obj for train
   let newTrain = {
     trainName,
     destination,
     firstArrival,
-    frequency
+    frequency,
+    minutesAway,
+    nextArrival
 
   }
   //sends info to firebase real time database
@@ -88,58 +134,35 @@ database.ref().on("child_added", function (snapshot) {
   let snapDestination = snapshot.val().destination;
   let snapFrequency = snapshot.val().frequency;
   let snapFirstArrival = snapshot.val().firstArrival;
+  let snapNextArrival = snapshot.val().nextArrival;
+  let snapMinutesAway = snapshot.val().minutesAway;
 
-  //train time
-  //get current time
-  let currentTime = moment().format("HH:mmA");
-  console.log("current time",currentTime)
-  //
-  //
-  let tTime = moment(snapFirstArrival, "HH:mmA");
-  console.log("train time",tTime)
-  //
-  //
-  //converts frequency into moment minutes
-  let everyxm = moment(snapFrequency, "mmA")
-  console.log("every x minutes",everyxm)
 
+
+  console.log("snapshot", snapshot.val())
+
+
+  const row = $("<tr>")
+  const nameTd = $("<td>").text(snapName)
+  const destinationTd = $("<td>").text(snapDestination)
+  const frequencyTd = $("<td>").text(snapFrequency)
+  const arrivalTd = $("<td>").text(snapNextArrival)
+  const minutesAwayTd = $("<td>").text(snapMinutesAway)
+
+
+
+
+
+  row.append(nameTd)
+  row.append(destinationTd)
+  row.append(frequencyTd)
+  row.append(arrivalTd)
+  row.append(minutesAwayTd)
   
-    let minutesAway;
-    let nextArrival;
-
-  
- let maxMoment= moment.max(moment(),tTime);
- console.log("max moment",maxMoment)
-
-
-  // If the first train is later than the current time, sent arrival to the first train time
-  if (maxMoment === tTime) {
-    nextArrival = tTime.format("hh:mm A");
-    minutesAway = tTime.diff(moment(), "minutes");
-  } else {
-    // Calculate the minutes until arrival using hardcore math
-    // To calculate the minutes till arrival, take the current time in unix subtract the FirstTrain time
-    // and find the modulus between the difference and the frequency.
-    var differenceTimes = moment().diff(tTime, "minutes");
-    var tRemainder = differenceTimes % everyxm;
-    minutesAway = everyxm - tRemainder;
-    // To calculate the arrival time, add the minutesAway to the current time
-    nextArrival = moment()
-      .add(minutesAway, "m")
-      .format("hh:mm A");
-  }
-  console.log("minutesAway:", minutesAway);
-  console.log("nextArrival:", nextArrival);
 
 
 
- 
-
-
-
-
-
-
+  $("#pullTrain").append(row)
 
 
 
